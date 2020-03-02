@@ -1,0 +1,16 @@
+certifi==2019.11.28
+chardet==3.0.4
+Click==7.0
+Flask==1.1.1
+googletrans==2.4.0
+idna==2.9
+itsdangerous==1.1.0
+Jinja2==2.11.1
+langdetect==1.0.7
+MarkupSafe==1.1.1
+pyTelegramBotAPI==3.6.7
+regex==2020.2.20
+requests==2.23.0
+six==1.14.0
+urllib3==1.25.8
+Werkzeug==1.0.0
