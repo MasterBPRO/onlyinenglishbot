@@ -4,7 +4,7 @@ import os
 from googletrans import Translator
 from flask import Flask, request
 
-
+# Инитилизация переменных
 TOKEN = os.getenv("TOKEN")
 URL = os.getenv("URL")
 server = Flask(__name__)
