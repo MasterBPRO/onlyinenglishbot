@@ -1,10 +1,9 @@
 import telebot
 import regex as re
-import os
 from googletrans import Translator
 from flask import Flask, request
 
-# Инитилизация переменных
+
 TOKEN = os.getenv("TOKEN")
 URL = os.getenv("URL")
 server = Flask(__name__)
@@ -22,8 +21,9 @@ def start_conv(message):
     """Функция для ответа пользователю"""
     if get_lang(message.text):
         try:
-            bot.send_message(message.chat.id, text="Dear {}! \n\nNow you are connected with <b>NASA</b>, please,  gain your ideas and whatever you want to say and write it in <b>English</b> right here. \n\nThank you for your understanding!".format(user_mention(message.from_user)), parse_mode="html")
-            bot.delete_message(message.chat.id, message.message_id)
+            if message.from_user.first_name != "Telegram":
+                bot.send_message(message.chat.id, text="Dear {}! \n\nNow you are connected with <b>NASA</b>, please,  gain your ideas and whatever you want to say and write it in <b>English</b> right here. \n\nThank you for your understanding!".format(user_mention(message.from_user)), parse_mode="html")
+                bot.delete_message(message.chat.id, message.message_id)
         except Exception as A:
             print("[LOG]", A)
 
@@ -61,5 +61,4 @@ def webhook():
     return "!", 200
 
 
-if __name__ == "__main__":
-    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
